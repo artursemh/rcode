@@ -1,0 +1,89 @@
+<!--
+  Generated template for the FeedPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-row>
+          <ion-col center text-center col-10>
+            <button ion-button menuToggle>
+              <ion-icon name="menu"></ion-icon>
+              <ion-title>{{ objeto_feed.titulo }}</ion-title>
+            </button>
+          </ion-col> 
+          <ion-col>
+            <button ion-button small>
+              <ion-icon name="list-box"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding class="background">
+  
+    <!--ngFor é uma diretiva para executar o loop do ion-card-->
+    <!--se tiver * antes da diretiva indica que é uma diretiva que 
+        mexe com a estrutura do elemento que for aplicada-->
+    <!--let cria uma variável-->
+  
+    <!--pega cada varável filme dentro da minha variável lista_filmes (loop)-->
+    <ion-card *ngFor="let filme of lista_filmes">
+      <ion-item>
+        <!--<ion-avatar item-start>
+            <img src="assets/imgs/Artur.jpg">
+          </ion-avatar>-->
+        <!--TEM QUE CHECAR A SINTAXE DAS INFORMAÇÕES DA API UTILIZADA-->
+        <ion-row align-items-center>
+          <ion-col col-8>
+            <h2 class="feed_title">{{ filme.original_title }}</h2>
+            <!--<p class="feed_date">{{filme.release_date}}</p>-->
+          </ion-col>
+          <ion-col>
+            <button ion-button icon-right clear>
+              <ion-icon name="people"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+  
+      </ion-item>
+  
+      <!--<ion-item>
+        <ion-label>Teste</ion-label>
+        <ion-toggle disabled checked="false"></ion-toggle>
+      </ion-item>-->
+  
+      <!--com colchetes estamos fazendo um binding na src para poder receber variável-->
+      <!--<img [src]="'https://image.tmdb.org/t/p/w300/'+ filme.backdrop_path">-->
+  
+      <!--<ion-card-content>
+          <p>{{filme.overview}}</p>
+        </ion-card-content>-->
+  
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="people"></ion-icon>
+            <div>Participantes: {{objeto_feed.likes}}</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="text"></ion-icon>
+            <div>Id: {{objeto_feed.comments}}</div>
+          </button>
+        </ion-col>
+        <ion-col center text-center>
+          <!--<ion-note>
+              {{objeto_feed.time_ago}}
+            </ion-note>-->
+        </ion-col>
+      </ion-row>
+  
+    </ion-card>
+  </ion-content>
