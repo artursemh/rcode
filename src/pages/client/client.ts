@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { MovieProvider } from '../../providers/movie/movie';
+import { RcodeProvider } from '../../providers/rcode/rcode';
 
 /**
  * Generated class for the FeedPage page.
@@ -15,7 +15,7 @@ import { MovieProvider } from '../../providers/movie/movie';
   templateUrl: 'client.html',
   //injetar componente para que esse codigo reconheça a classe
   providers: [
-    MovieProvider
+    RcodeProvider
   ]
 })
 export class ClientPage {
@@ -29,7 +29,7 @@ export class ClientPage {
     time_ago: "10h ago"
   }
 
-  public lista_filmes: Array<any>;
+  public lista_rcode: Array<any>;
 
   public nome_user:string = "Artur";
   /*Pra variavel aparecer no html é preciso fazer um binding {{}} */
@@ -37,14 +37,8 @@ export class ClientPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     //injetando o movieprovider apenas nessa parte do código
-    private movieProvider: MovieProvider
+    private rcodeProvider: RcodeProvider
   ) {
-  }
-
-  /*Criando função*/
-  /*Função que não seja do tipo any ou void tem que retornar algo*/
-  public SomaDoisNumeros(num1:number, num2:number):void{
-    //alert(num1+num2);
   }
 
   ionViewDidLoad() {
@@ -57,16 +51,13 @@ export class ClientPage {
 
     //Observable "diz": observe a função, qundo ela me retornar o resultado é passado para ser usado
     //getLatestMovies é Observable
-    this.movieProvider.getLatesteMovies().subscribe(
-      //quando consegue o retorno da informação, entra no data, quando der erro entra na error
+    this.rcodeProvider.getRcode().subscribe(
       data=>{
-        //transforma a resposta em "qq coisa" pra poder receber todo tipo de info
         const response = (data as any);
-        //transforma a resposta em JSON pq o angular pega Json e transforma em texto
-        //depois é necessário transformar em json novamente
         const objeto_retorno = JSON.parse(response._body);
-        this.lista_filmes = objeto_retorno.results;
+        this.lista_rcode = objeto_retorno.results;
         console.log(response._body);
+        //console.log(data);
       },
       error=>{
         console.log(error)

@@ -33,7 +33,7 @@
     <!--let cria uma variável-->
   
     <!--pega cada varável filme dentro da minha variável lista_filmes (loop)-->
-    <ion-card *ngFor="let filme of lista_filmes">
+    <ion-card *ngFor="let rcode of lista_rcode">
       <ion-item>
         <!--<ion-avatar item-start>
             <img src="assets/imgs/Artur.jpg">
@@ -41,7 +41,7 @@
         <!--TEM QUE CHECAR A SINTAXE DAS INFORMAÇÕES DA API UTILIZADA-->
         <ion-row align-items-center>
           <ion-col col-8>
-            <h2 class="feed_title">{{ filme.original_title }}</h2>
+            <h2 class="feed_title">{{rcode.USUARIO}}</h2>
             <!--<p class="feed_date">{{filme.release_date}}</p>-->
           </ion-col>
           <ion-col>
@@ -69,13 +69,13 @@
         <ion-col>
           <button ion-button icon-left clear small>
             <ion-icon name="people"></ion-icon>
-            <div>Participantes: {{objeto_feed.likes}}</div>
+            <div>Participantes: 20</div>
           </button>
         </ion-col>
         <ion-col>
           <button ion-button icon-left clear small>
             <ion-icon name="text"></ion-icon>
-            <div>Id: {{objeto_feed.comments}}</div>
+            <div>Id: 5</div>
           </button>
         </ion-col>
         <ion-col center text-center>

@@ -2,6 +2,7 @@ import { Http } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { Injectable } from '@angular/core';
+import { Platform } from 'ionic-angular';
 
 /*
   Generated class for the MovieProvider provider.
@@ -13,17 +14,23 @@ import { Injectable } from '@angular/core';
 //injectable basicamente refere ao fato de que a classe vai ser usada dentro de outra classe
 //compatrilhado com outras partes do app
 @Injectable()
-export class MovieProvider {
-  //boa prática pra não ficar repetindo url toda hora
-  private baseApiPath = "https://api.themoviedb.org/3";
+export class RcodeProvider {
+  //boa prática pra não ficar repetindo url toda hora;
+  basePath = "/rcodeapi"
   //private baseApiPath = "http://www.roboticajr.com.br/webservice/api/";
-  constructor(public http: Http) {
-    console.log('Hello MovieProvider Provider');
+  constructor(
+    public http: Http,
+    private _platform: Platform
+  ) {
+    //console.log('Hello RcodeProvider Provider');
+    if(this._platform.is("cordova")){
+      this.basePath = "http://www.roboticajr.com.br";
+    }
   }
 
   //criando método para solicitar a informação
-  getLatesteMovies(){
-    return this.http.get(this.baseApiPath + "/movie/popular?api_key=b5d4f42555dcd09db280a4d7658169d3");
+  getRcode(){
+    return this.http.get(this.basePath + "/webservice/api/");
     //return this.http.get(this.baseApiPath);
   }
 
