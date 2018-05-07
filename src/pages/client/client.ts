@@ -32,6 +32,7 @@ export class ClientPage {
 
   public lista_rcode: Array<any>;
   public resp_eventos: Array<any>;
+  public call_palestra: Array<any>;
   public login_eventos: string;
   public user: Array<any>;
 
@@ -65,7 +66,8 @@ export class ClientPage {
         //this.login_eventos = <string>this.resp_eventos.INFO.EVENTOS;
         this.lista_rcode = objeto_retorno.results[0].INFO[0].EVENTOS;
         //console.log(response._body);
-        console.log(objeto_retorno.results[0].INFO[0].EVENTOS);
+        this.call_palestra = objeto_retorno.results[0];
+        console.log(objeto_retorno.results[0]);
         //console.log(data); 
       },
       error=>{
@@ -75,7 +77,7 @@ export class ClientPage {
   }
 
   palestras(evento:any){
-    this.navCtrl.push(EventoPage, {evento}); 
+    this.navCtrl.push(EventoPage, {evento, user:this.call_palestra}); 
     console.log(evento);
   }
 
