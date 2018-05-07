@@ -33,15 +33,15 @@
     <!--let cria uma variável-->
   
     <!--pega cada varável filme dentro da minha variável lista_filmes (loop)-->
-    <ion-card *ngFor="let rcode of lista_rcode">
-      <ion-item>
+    <ion-card *ngFor="let rcode of lista_rcode" (click)="palestras(rcode.EVENTO)">
+      <ion-item >
         <!--<ion-avatar item-start>
             <img src="assets/imgs/Artur.jpg">
           </ion-avatar>-->
         <!--TEM QUE CHECAR A SINTAXE DAS INFORMAÇÕES DA API UTILIZADA-->
         <ion-row align-items-center>
           <ion-col col-8>
-            <h2 class="feed_title">{{rcode.USUARIO}}</h2>
+            <h2 class="feed_title">{{rcode.EVENTO}}</h2>
             <!--<p class="feed_date">{{filme.release_date}}</p>-->
           </ion-col>
           <ion-col>

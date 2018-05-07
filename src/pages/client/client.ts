@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RcodeProvider } from '../../providers/rcode/rcode';
+import { EventoPage } from '../evento/evento';
 
 /**
  * Generated class for the FeedPage page.
@@ -30,6 +31,8 @@ export class ClientPage {
   }
 
   public lista_rcode: Array<any>;
+  public resp_eventos: Array<any>;
+  public login_eventos: string;
   public user: Array<any>;
 
   public nome_user:string = "Artur";
@@ -52,20 +55,28 @@ export class ClientPage {
     //Observable "diz": observe a função, qundo ela me retornar o resultado é passado para ser usado
     //getLatestMovies é Observable
 
-    this.rcodeProvider.getRcode().subscribe(
+    this.rcodeProvider.getRcode(<string>this.navParams.get('usuario'), <string>this.navParams.get('permition')).subscribe(
       data=>{
         const response = (data as any);
-        let permition_login = this.navParams.get('permition');
-        let user_login = this.navParams.get('usuario');
+        //let permition_login = this.navParams.get('permition');
+        //let user_login = this.navParams.get('usuario');
         const objeto_retorno = JSON.parse(response._body);
-        this.lista_rcode = objeto_retorno.results;
-        console.log("User chegando: "+user_login);
+        this.resp_eventos = objeto_retorno.results;
+        //this.login_eventos = <string>this.resp_eventos.INFO.EVENTOS;
+        this.lista_rcode = objeto_retorno.results[0].INFO[0].EVENTOS;
+        //console.log(response._body);
+        console.log(objeto_retorno.results[0].INFO[0].EVENTOS);
         //console.log(data); 
       },
       error=>{
         console.log(error)
       },
     )
+  }
+
+  palestras(evento:any){
+    this.navCtrl.push(EventoPage, {evento}); 
+    console.log(evento);
   }
 
 }

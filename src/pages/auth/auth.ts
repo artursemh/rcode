@@ -44,7 +44,7 @@ export class AuthPage {
             permition: this.resp_auth.login.auth,
             usuario: this.resp_auth.login.usuario
           }); 
-          console.log();}
+          console.log("ola");}
         else{
           alert("Credenciais inválidas");
           this.navCtrl.push(HomePage);

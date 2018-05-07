@@ -29,8 +29,8 @@ export class RcodeProvider {
   }
 
   //criando método para solicitar a informação
-  getRcode(){
-    return this.http.get(this.basePath + "/webservice/api/");
+  getRcode(usuario:string, permition:string){
+    return this.http.get(this.basePath + "/webservice/api/index.php?usuario="+usuario+"&permition="+permition);
     //return this.http.get(this.baseApiPath);
   }
 
