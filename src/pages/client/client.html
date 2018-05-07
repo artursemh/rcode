@@ -6,84 +6,100 @@
 -->
 <ion-header>
 
-    <ion-navbar>
-        <ion-row>
-          <ion-col center text-center col-10>
-            <button ion-button menuToggle>
-              <ion-icon name="menu"></ion-icon>
-              <ion-title>{{ objeto_feed.titulo }}</ion-title>
-            </button>
-          </ion-col> 
-          <ion-col>
-            <button ion-button small>
-              <ion-icon name="list-box"></ion-icon>
-            </button>
-          </ion-col>
-        </ion-row>
-      </ion-navbar>
-  
-  </ion-header>
-  
-  
-  <ion-content padding class="background">
-  
-    <!--ngFor é uma diretiva para executar o loop do ion-card-->
-    <!--se tiver * antes da diretiva indica que é uma diretiva que 
+  <ion-navbar>
+    <ion-row>
+      <ion-col center text-center col-10>
+        <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+          <ion-title>{{ objeto_feed.titulo }}</ion-title>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button small>
+          <ion-icon name="list-box"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="background">
+
+  <!--ngFor é uma diretiva para executar o loop do ion-card-->
+  <!--se tiver * antes da diretiva indica que é uma diretiva que 
         mexe com a estrutura do elemento que for aplicada-->
-    <!--let cria uma variável-->
-  
-    <!--pega cada varável filme dentro da minha variável lista_filmes (loop)-->
-    <ion-card *ngFor="let rcode of lista_rcode" (click)="palestras(rcode.EVENTO)">
-      <ion-item >
-        <!--<ion-avatar item-start>
+  <!--let cria uma variável-->
+
+  <!--pega cada varável filme dentro da minha variável lista_filmes (loop)-->
+  <!--<ion-card *ngFor="let rcode of lista_rcode" (click)="palestras(rcode.EVENTO)">
+    <ion-item>-->
+      <!--<ion-avatar item-start>
             <img src="assets/imgs/Artur.jpg">
           </ion-avatar>-->
-        <!--TEM QUE CHECAR A SINTAXE DAS INFORMAÇÕES DA API UTILIZADA-->
-        <ion-row align-items-center>
-          <ion-col col-8>
-            <h2 class="feed_title">{{rcode.EVENTO}}</h2>
-            <!--<p class="feed_date">{{filme.release_date}}</p>-->
-          </ion-col>
-          <ion-col>
-            <button ion-button icon-right clear>
-              <ion-icon name="people"></ion-icon>
-            </button>
-          </ion-col>
-        </ion-row>
-  
-      </ion-item>
-  
-      <!--<ion-item>
+      <!--TEM QUE CHECAR A SINTAXE DAS INFORMAÇÕES DA API UTILIZADA-->
+      <!--<ion-row align-items-center>
+        <ion-col col-8>
+          <h2 class="feed_title">{{rcode.EVENTO}}</h2>-->
+          <!--<p class="feed_date">{{filme.release_date}}</p>-->
+        <!--</ion-col>
+        <ion-col>
+          <button ion-button icon-right clear>
+            <ion-icon name="people"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+
+    </ion-item>-->
+
+    <!--<ion-item>
         <ion-label>Teste</ion-label>
         <ion-toggle disabled checked="false"></ion-toggle>
       </ion-item>-->
-  
-      <!--com colchetes estamos fazendo um binding na src para poder receber variável-->
-      <!--<img [src]="'https://image.tmdb.org/t/p/w300/'+ filme.backdrop_path">-->
-  
-      <!--<ion-card-content>
+
+    <!--com colchetes estamos fazendo um binding na src para poder receber variável-->
+    <!--<img [src]="'https://image.tmdb.org/t/p/w300/'+ filme.backdrop_path">-->
+
+    <!--<ion-card-content>
           <p>{{filme.overview}}</p>
         </ion-card-content>-->
-  
-      <ion-row>
-        <ion-col>
-          <button ion-button icon-left clear small>
-            <ion-icon name="people"></ion-icon>
-            <div>Participantes: 20</div>
-          </button>
-        </ion-col>
-        <ion-col>
-          <button ion-button icon-left clear small>
-            <ion-icon name="text"></ion-icon>
-            <div>Id: 5</div>
-          </button>
-        </ion-col>
-        <ion-col center text-center>
-          <!--<ion-note>
+
+    <!--<ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="people"></ion-icon>
+          <div>Participantes: 20</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="text"></ion-icon>
+          <div>Id: 5</div>
+        </button>
+      </ion-col>-->
+      <!--<ion-col center text-center>-->
+        <!--<ion-note>
               {{objeto_feed.time_ago}}
             </ion-note>-->
-        </ion-col>
-      </ion-row>
-  
-    </ion-card>
-  </ion-content>
+      <!--</ion-col>
+    </ion-row>
+
+  </ion-card>-->
+
+
+  <div class="accordion">
+    <ul *ngFor="let rcode of lista_rcode; let i=index">
+      <li>
+        <a href="#" class="acc-handle" tabindex="0">{{rcode.EVENTO}}</a>
+        <div class="acc-panel">
+          <ion-item text-wrap *ngFor="let palestra of lista_rcode[i].PALESTRAS; let i=index" (click)="home(palestra.PALESTRA)">
+              <br> 
+                <p><ion-icon name="people"></ion-icon> {{palestra.PALESTRA}}</p>
+          </ion-item>
+          <!--<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>-->
+        </div>
+      </li>
+    </ul>
+  </div>
+</ion-content>

@@ -12,7 +12,10 @@ import { HttpModule } from '@angular/http';
 import { EventoPageModule } from '../pages/evento/evento.module';
 import { ClientPageModule } from '../pages/client/client.module';
 import { SearchPageModule } from '../pages/search/search.module';
-import { AuthPageModule } from '../pages/auth/auth.module';
+import { AuthPageModule } from '../pages/auth/auth.module';]
+import { AccordionPageModule } from '../pages/accordion/accordion.module';
+
+import { AccordionComponent} from '../components/accordion/accordion';
 
 
 @NgModule({
@@ -20,6 +23,7 @@ import { AuthPageModule } from '../pages/auth/auth.module';
     MyApp,
     HomePage,
     ListPage,
+    AccordionComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +32,7 @@ import { AuthPageModule } from '../pages/auth/auth.module';
     ClientPageModule,
     SearchPageModule,
     AuthPageModule,
+    AccordionPageModule,
     HttpModule
   ],
   bootstrap: [IonicApp],

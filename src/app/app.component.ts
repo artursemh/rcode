@@ -26,6 +26,7 @@ import { EventoPage } from '../pages/evento/evento';
 import { ClientPage } from '../pages/client/client';
 import { SearchPage } from '../pages/search/search';
 import { AuthPage } from '../pages/auth/auth';
+import { AccordionPage } from '../pages/accordion/accordion';
 
 @Component({
   templateUrl: 'app.html',
@@ -61,7 +62,8 @@ export class MyApp {
       { title: 'Evento', component: EventoPage },
       { title: 'Sair', component: HomePage },
       { title: 'Busca', component: SearchPage },
-      { title: 'Autenticação', component: AuthPage }
+      { title: 'Autenticação', component: AuthPage },
+      { title: 'Accordion', component: AccordionPage }
     ];
 
   }

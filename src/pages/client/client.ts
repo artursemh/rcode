@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RcodeProvider } from '../../providers/rcode/rcode';
 import { EventoPage } from '../evento/evento';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the FeedPage page.
@@ -67,7 +68,7 @@ export class ClientPage {
         this.lista_rcode = objeto_retorno.results[0].INFO[0].EVENTOS;
         //console.log(response._body);
         this.call_palestra = objeto_retorno.results[0];
-        console.log(objeto_retorno.results[0]);
+        console.log(this.lista_rcode);
         //console.log(data); 
       },
       error=>{
@@ -79,6 +80,11 @@ export class ClientPage {
   palestras(evento:any){
     this.navCtrl.push(EventoPage, {evento, user:this.call_palestra}); 
     console.log(evento);
+  }
+
+  home(palestra:any){
+    this.navCtrl.push(HomePage);
+    console.log(palestra);
   }
 
 }
