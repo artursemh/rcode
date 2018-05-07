@@ -55,11 +55,11 @@ export class ClientPage {
     this.rcodeProvider.getRcode().subscribe(
       data=>{
         const response = (data as any);
-        let user_login = this.navParams.get('user');
-        let pass_login = this.navParams.get('pass');
+        let permition_login = this.navParams.get('permition');
+        let user_login = this.navParams.get('usuario');
         const objeto_retorno = JSON.parse(response._body);
         this.lista_rcode = objeto_retorno.results;
-        console.log(response._body);
+        console.log("User chegando: "+user_login);
         //console.log(data); 
       },
       error=>{

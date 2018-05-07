@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
+import { ClientPage } from '../client/client';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the AuthPage page.
@@ -19,6 +21,7 @@ import { AuthProvider } from '../../providers/auth/auth';
 })
 export class AuthPage {
   public resp_auth: Array<any>;
+  public login_auth: string;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -27,14 +30,25 @@ export class AuthPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ClientPage');
+    console.log('ionViewDidLoad AuthPage');
     this.authProvider.getAuth(<string>this.navParams.get('user'), <string>this.navParams.get('pass')).subscribe(
       data=>{
         const response = (data as any);
         const objeto_retorno = JSON.parse(response._body);
         this.resp_auth = objeto_retorno;
-        console.log(response._body);
+        this.login_auth = <string>this.resp_auth.login.auth;
+        console.log(this.login_auth);
         //console.log(data); 
+        if(this.login_auth == "1")
+        { this.navCtrl.push(ClientPage, {
+            permition: this.resp_auth.login.auth,
+            usuario: this.resp_auth.login.usuario
+          }); 
+          console.log();}
+        else{
+          alert("Credenciais inválidas");
+          this.navCtrl.push(HomePage);
+        }
       },
       error=>{
         console.log(error)
