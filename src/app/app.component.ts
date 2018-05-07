@@ -1,3 +1,20 @@
+/*
+Olá, se você está acessando esse código, então você deve estar dando manutenção no Rcode.
+Venho do ano de 2018 para pedir QUE VOCÊ DOCUMENTE CADA VIRGULA DESSA CARAIA AQUI
+PQ A GENTE PEGOU O APP SEM TER O CÓDIGO, CRIOU A VERSÃO 2.0 E TAMO DOCUMENTANDO
+COMO SE A VIDA DA NOSSAS MÃES DEPENDESSEM DISSO!
+
+Qualquer dúvida que vocês tiverem, entrem em contato comigo, independentemente do ano.
+Uma vez Robótica Jr., sempre Robótica Jr.
+
+carinhosamente,
+
+--
+Artur Passos do Amaral
+Diretor Presidente
+FACEBOOK: https://www.facebook.com/arturpamaral
+*/
+
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -8,7 +25,7 @@ import { ListPage } from '../pages/list/list';
 import { EventoPage } from '../pages/evento/evento';
 import { ClientPage } from '../pages/client/client';
 import { SearchPage } from '../pages/search/search';
-
+import { AuthPage } from '../pages/auth/auth';
 
 @Component({
   templateUrl: 'app.html',
@@ -43,7 +60,8 @@ export class MyApp {
       { title: 'List', component: ListPage },
       { title: 'Evento', component: EventoPage },
       { title: 'Sair', component: HomePage },
-      { title: 'Busca', component: SearchPage }
+      { title: 'Busca', component: SearchPage },
+      { title: 'Autenticação', component: AuthPage }
     ];
 
   }

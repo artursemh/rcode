@@ -12,6 +12,7 @@ import { HttpModule } from '@angular/http';
 import { EventoPageModule } from '../pages/evento/evento.module';
 import { ClientPageModule } from '../pages/client/client.module';
 import { SearchPageModule } from '../pages/search/search.module';
+import { AuthPageModule } from '../pages/auth/auth.module';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { SearchPageModule } from '../pages/search/search.module';
     EventoPageModule,
     ClientPageModule,
     SearchPageModule,
+    AuthPageModule,
     HttpModule
   ],
   bootstrap: [IonicApp],

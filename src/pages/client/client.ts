@@ -30,6 +30,7 @@ export class ClientPage {
   }
 
   public lista_rcode: Array<any>;
+  public user: Array<any>;
 
   public nome_user:string = "Artur";
   /*Pra variavel aparecer no html é preciso fazer um binding {{}} */
@@ -37,10 +38,9 @@ export class ClientPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     //injetando o movieprovider apenas nessa parte do código
-    private rcodeProvider: RcodeProvider
+    private rcodeProvider: RcodeProvider,
   ) {
   }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad ClientPage');
     /*Aqui dentro executam ações quando a página for carregada */
@@ -51,17 +51,20 @@ export class ClientPage {
 
     //Observable "diz": observe a função, qundo ela me retornar o resultado é passado para ser usado
     //getLatestMovies é Observable
+
     this.rcodeProvider.getRcode().subscribe(
       data=>{
         const response = (data as any);
+        let user_login = this.navParams.get('user');
+        let pass_login = this.navParams.get('pass');
         const objeto_retorno = JSON.parse(response._body);
         this.lista_rcode = objeto_retorno.results;
         console.log(response._body);
-        //console.log(data);
+        //console.log(data); 
       },
       error=>{
         console.log(error)
-      }
+      },
     )
   }
 
