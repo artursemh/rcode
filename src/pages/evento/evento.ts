@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { Platform } from 'ionic-angular';
+
 /**
  * Generated class for the EventoPage page.
  *
@@ -15,11 +19,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class EventoPage {
   lista_rcode: Array<any>;
   resp_eventos: Array<any>;
+  scannedCode = null;
   public evento_clicado:string;
   public user_logged: Array<any>;
   constructor(
+    private _platform: Platform,
     public navCtrl: NavController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    private barcodeScanner: BarcodeScanner,
   ) {
   }
 
@@ -31,4 +38,16 @@ export class EventoPage {
     console.log(this.user_logged);
   }
 
+  scanCode(){
+    if(this._platform.is("cordova"))
+    { this.barcodeScanner.scan().then(barcodeData =>{
+        this.scannedCode = barcodeData.text;
+        console.log(this.scannedCode);
+      })
+    }
+    else{
+      console.log("The code Works. Not crashing");
+    }
+    
+  }
 }

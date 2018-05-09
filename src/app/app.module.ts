@@ -12,8 +12,10 @@ import { HttpModule } from '@angular/http';
 import { EventoPageModule } from '../pages/evento/evento.module';
 import { ClientPageModule } from '../pages/client/client.module';
 import { SearchPageModule } from '../pages/search/search.module';
-import { AuthPageModule } from '../pages/auth/auth.module';]
+import { AuthPageModule } from '../pages/auth/auth.module';
 import { AccordionPageModule } from '../pages/accordion/accordion.module';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 import { AccordionComponent} from '../components/accordion/accordion';
 
@@ -33,7 +35,8 @@ import { AccordionComponent} from '../components/accordion/accordion';
     SearchPageModule,
     AuthPageModule,
     AccordionPageModule,
-    HttpModule
+    HttpModule,
+    NgxQRCodeModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -44,7 +47,8 @@ import { AccordionComponent} from '../components/accordion/accordion';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    BarcodeScanner
   ]
 })
 

@@ -1,6 +1,6 @@
-import { Http } from '@angular/http';
+//import { Http } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Platform } from 'ionic-angular';
 

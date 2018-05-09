@@ -1,9 +1,11 @@
 import { Http } from '@angular/http';
+//import { HTTP } from '@ionic-native/http';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AuthPage } from '../../pages/auth/auth';
 
 /*
   Generated class for the MovieProvider provider.
@@ -36,7 +38,7 @@ export class AuthProvider {
   getAuth(usuario:string, senha:string){
     //let user_login = this.navParams.get('user');
     //let pass_login = this.navParams.get('pass');
-    return this.http.get(this.basePath + "/webservice/api/auth.php?user=" + usuario + "&senha="+ senha);
+    return this.http.get(this.basePath + "/webservice/api/auth.php?user=" + usuario + "&senha=" + senha);
     //return this.http.get(this.baseApiPath);
   }
 

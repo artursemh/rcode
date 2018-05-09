@@ -36,7 +36,7 @@
         <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
       </ion-item>
       <ion-item center text-center>
-        <button ion-button icon-center color="blue" round large>
+        <button ion-button icon-center color="blue" round large (click)="scanCode()">
             <ion-icon name="qr-scanner"></ion-icon>
         </button>
       </ion-item>

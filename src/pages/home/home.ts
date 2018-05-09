@@ -10,15 +10,15 @@ import { AuthPage } from '../auth/auth';
 })
 export class HomePage {
   public authPath: "http://www.roboticajr.com.br";
-  public credencial: Object = {
+  private credencial: any = {
     usuario: '',
     senha: ''
   };
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     //injetando o movieprovider apenas nessa parte do código
-   // private authProvider: AuthProvider
   ) {
   }
   public login() {

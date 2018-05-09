@@ -36,15 +36,18 @@ export class AuthPage {
         const response = (data as any);
         const objeto_retorno = JSON.parse(response._body);
         this.resp_auth = objeto_retorno;
-        this.login_auth = <string>this.resp_auth.login.auth;
+        //this.login_auth = <string>this.resp_auth.login.auth;
+        this.login_auth = <string>objeto_retorno.login.auth;
         console.log(this.login_auth);
+        //alert(this.login_auth);
         //console.log(data); 
         if(this.login_auth == "1")
         { this.navCtrl.push(ClientPage, {
-            permition: this.resp_auth.login.auth,
-            usuario: this.resp_auth.login.usuario
+            permition: objeto_retorno.login.auth,
+            usuario: objeto_retorno.login.usuario
           }); 
-          console.log("ola");}
+          console.log("ola");
+        }
         else{
           alert("Credenciais inválidas");
           this.navCtrl.push(HomePage);
@@ -55,5 +58,13 @@ export class AuthPage {
       },
     ) 
   }
+
+  /*public login() {
+    this.navCtrl.push(AuthPage, {
+      user: this.credencial.usuario,
+      pass: this.credencial.senha
+    });
+    console.log(this.credencial.usuario);
+  }*/
 
 }

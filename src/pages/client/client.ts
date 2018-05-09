@@ -83,7 +83,7 @@ export class ClientPage {
   }
 
   home(palestra:any){
-    this.navCtrl.push(HomePage);
+    this.navCtrl.push(EventoPage);
     console.log(palestra);
   }
 
