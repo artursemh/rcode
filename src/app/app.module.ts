@@ -16,6 +16,7 @@ import { AuthPageModule } from '../pages/auth/auth.module';
 import { AccordionPageModule } from '../pages/accordion/accordion.module';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { Camera } from '@ionic-native/camera';
 
 import { AccordionComponent} from '../components/accordion/accordion';
 
@@ -47,8 +48,9 @@ import { AccordionComponent} from '../components/accordion/accordion';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    BarcodeScanner
+    Camera,
+    BarcodeScanner,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 

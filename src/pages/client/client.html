@@ -93,7 +93,7 @@
       <li>
         <a href="#" class="acc-handle" tabindex="0">{{rcode.EVENTO}}</a>
         <div class="acc-panel">
-          <ion-item text-wrap *ngFor="let palestra of lista_rcode[i].PALESTRAS; let i=index" (click)="home(palestra.PALESTRA)">
+          <ion-item text-wrap *ngFor="let palestra of lista_rcode[i].PALESTRAS; let i=index" (click)="home(palestra.PALESTRA, rcode.ID)">
               <br> 
                 <p><ion-icon name="people"></ion-icon> {{palestra.PALESTRA}}</p>
           </ion-item>

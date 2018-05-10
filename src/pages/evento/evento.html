@@ -40,7 +40,12 @@
             <ion-icon name="qr-scanner"></ion-icon>
         </button>
       </ion-item>
-  
+    </ion-card>
+
+    <ion-card text-wrap *ngIf="scannedCode">
+      <ion-card-content>
+        Última leitura: {{ scannedCode }}
+      </ion-card-content>
     </ion-card>
 
     <ion-item center text-center style="background-color: #f5f5f5" class="logo_abaixo">

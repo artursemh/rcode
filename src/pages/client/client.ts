@@ -82,8 +82,8 @@ export class ClientPage {
     console.log(evento);
   }
 
-  home(palestra:any){
-    this.navCtrl.push(EventoPage);
+  home(palestra:any, evento:any){
+    this.navCtrl.push(EventoPage, {palestra, evento});
     console.log(palestra);
   }
 
