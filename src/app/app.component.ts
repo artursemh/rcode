@@ -33,17 +33,9 @@ import { AccordionPage } from '../pages/accordion/accordion';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
+  //public is_back ="0";
 
-  public objeto_feed = {
-    titulo: "Artur Amaral",
-    data: "25 de Abril, 2018",
-    descricao: "There's a news feed on my app. That's interesting.",
-    likes: 12,
-    comments: 6,
-    time_ago: "10h ago"
-  }
-
-  rootPage: any = HomePage;
+  rootPage: any = ClientPage;
 
   pages: Array<{title: string, component: any}>;
 

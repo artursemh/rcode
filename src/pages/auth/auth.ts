@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { ClientPage } from '../client/client';
 import { HomePage } from '../home/home';
+import { AppModule } from '../../app/app.module';
 
 /**
  * Generated class for the AuthPage page.
@@ -17,16 +18,26 @@ import { HomePage } from '../home/home';
   templateUrl: 'auth.html',
   providers: [
     AuthProvider
-  ]
+  ],
 })
 export class AuthPage {
   public resp_auth: Array<any>;
   public login_auth: string;
+  public try:string = "0";
+  public is_back:string = this.navParams.get('is_back');
+  public appModule: AppModule;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private authProvider: AuthProvider
   ) {
+  }
+
+  ionViewWillEnter(){
+    if(this.try == "1"){
+      alert("Saindo");
+      this.navCtrl.push(HomePage);
+    }
   }
 
   ionViewDidLoad() {
@@ -41,11 +52,14 @@ export class AuthPage {
         console.log(this.login_auth);
         //alert(this.login_auth);
         //console.log(data); 
-        if(this.login_auth == "1")
-        { this.navCtrl.push(ClientPage, {
+        if(this.login_auth == "1") 
+        { 
+          this.navCtrl.push(ClientPage, {
             permition: objeto_retorno.login.auth,
-            usuario: objeto_retorno.login.usuario
+            usuario: objeto_retorno.login.usuario,
+            try: "1",
           }); 
+          this.try = "1";
           console.log("ola");
         }
         else{

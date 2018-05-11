@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RcodeProvider } from '../../providers/rcode/rcode';
 import { EventoPage } from '../evento/evento';
 import { HomePage } from '../home/home';
+import { MyApp } from '../../app/app.component';
 
 /**
  * Generated class for the FeedPage page.
@@ -21,7 +22,6 @@ import { HomePage } from '../home/home';
   ]
 })
 export class ClientPage {
-
   public objeto_feed = {
     titulo: "Artur Amaral",
     data: "25 de Abril, 2018",
@@ -30,12 +30,13 @@ export class ClientPage {
     comments: 6,
     time_ago: "10h ago"
   }
-
-  public lista_rcode: Array<any>;
+  public cliente_atual: string;
+  public lista_rcode: Array<any> = null;
   public resp_eventos: Array<any>;
   public call_palestra: Array<any>;
   public login_eventos: string;
   public user: Array<any>;
+  public try:string; 
 
   public nome_user:string = "Artur";
   /*Pra variavel aparecer no html é preciso fazer um binding {{}} */
@@ -46,17 +47,23 @@ export class ClientPage {
     private rcodeProvider: RcodeProvider,
   ) {
   }
+
+  ionViewWillEnter(){
+    this.try = this.navParams.get('try');
+    if(!this.navParams.get('try')){
+      this.try = "1";
+      this.navCtrl.push(HomePage);
+    }
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad ClientPage');
     /*Aqui dentro executam ações quando a página for carregada */
     /*console.log('ionViewDidLoad FeedPage');*/
-    
-    /*This para executar */
-    /*this.SomaDoisNumeros(33, 8);*/
-
+    //this.is_back ="1";
     //Observable "diz": observe a função, qundo ela me retornar o resultado é passado para ser usado
     //getLatestMovies é Observable
-
+    this.cliente_atual = <string>this.navParams.get('usuario');
     this.rcodeProvider.getRcode(<string>this.navParams.get('usuario'), <string>this.navParams.get('permition')).subscribe(
       data=>{
         const response = (data as any);
