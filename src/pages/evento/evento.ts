@@ -23,8 +23,7 @@ export class EventoPage {
   resp_eventos: Array<any>;
   scannedCode = null;
   basePath = "/rcodeapi";
-  public http: Http;
-  public evento_clicado:string;
+  public evento_clicado: string;
   public user_logged: Array<any>;
   public palestra: string;
 
@@ -33,8 +32,9 @@ export class EventoPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private barcodeScanner: BarcodeScanner,
+    private http: Http,
   ) {
-    if(this._platform.is("cordova")){
+    if (this._platform.is("cordova")) {
       this.basePath = "https://www.roboticajr.com.br";
     }
   }
@@ -49,16 +49,30 @@ export class EventoPage {
 
   }
 
-  scanCode(){
+  scanCode() {
     let evento = this.navParams.get('evento');
     let palestra = this.navParams.get('palestra');
-    if(this._platform.is("cordova"))
-    {  this.barcodeScanner.scan().then(barcodeData =>{
-          this.scannedCode = barcodeData.text;
-        })
+    if (this._platform.is("cordova")) {
+      this.barcodeScanner.scan().then(barcodeData => {
+        this.scannedCode = barcodeData.text;
+        let resposta = "https://www.roboticajr.com.br/webservice/api/inscritos.php?evento=" + evento + "&palestra=" + palestra + "&JSON=presenca&scan="+this.scannedCode;
+        let ans = this.http.get(resposta);
+        ans
+          .subscribe(data => {
+            console.log('my data: ', data);
+          })
+      })
     }
-    else{
-      this.scannedCode = "Ta funcionando";
+    else {
+      //let reposta:any = 
+      let resposta = "https://www.roboticajr.com.br/webservice/api/inscritos.php?evento=" + evento + "&palestra=" + palestra + "&JSON=presenca&scan=22-22";
+      this.scannedCode = "Ta funcionando ev:" + evento + " pal: " + palestra;
+      let ans = this.http.get(resposta);
+      ans
+        .subscribe(data => {
+          console.log('my data: ', data);
+        })
+
     }
   }
 }
