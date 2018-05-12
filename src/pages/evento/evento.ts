@@ -5,6 +5,7 @@ import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-sca
 import { Platform } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { PresencaProvider } from '../../providers/presenca/presenca';
+import { SearchPage } from '../search/search';
 
 /**
  * Generated class for the EventoPage page.
@@ -55,6 +56,11 @@ export class EventoPage {
     console.log("palestra Get:" + this.palestra);
     
 
+  }
+
+
+  busca(){
+    this.navCtrl.push(SearchPage);    
   }
 
   scanCode() {

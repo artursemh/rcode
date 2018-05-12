@@ -26,29 +26,7 @@
   
   
   <ion-content padding class="background">
-  
-    <!--ngFor é uma diretiva para executar o loop do ion-card-->
-    <!--se tiver * antes da diretiva indica que é uma diretiva que 
-          mexe com a estrutura do elemento que for aplicada-->
-    <!--let cria uma variável-->
-  
-    <!--pega cada varável filme dentro da minha variável lista_filmes (loop)-->
     <ion-card *ngFor="let filme of lista_filmes">
-      <!-- <ion-item>-->
-      <!--TEM QUE CHECAR A SINTAXE DAS INFORMAÇÕES DA API UTILIZADA-->
-      <!-- <ion-row align-items-center>-->
-      <!--<ion-col col-8>
-              <h2 class="feed_title">{{ filme.original_title }}</h2>
-              <p class="feed_date">{{filme.release_date}}</p>
-            </ion-col>
-            <ion-col>
-              <button ion-button icon-right clear>
-                <ion-icon name="people"></ion-icon>
-              </button>
-            </ion-col>
-          </ion-row>
-        </ion-item>-->
-  
       <ion-item>
           <ion-label style="color:blue">{{ filme.original_title }}</ion-label>
           <ion-toggle enabled checked="false"></ion-toggle>
@@ -57,38 +35,7 @@
       <ion-item>
         <ion-row center text-center>
           <p class="feed_date">Id.: {{filme.release_date}}</p>
-        </ion-row>
+        </ion-row> 
       </ion-item>
-       <!-- <ion-row>
-          <p class="feed_date">Teste</p>
-        </ion-row>-->
-  
-      <!--com colchetes estamos fazendo um binding na src para poder receber variável-->
-      <!--<img [src]="'https://image.tmdb.org/t/p/w300/'+ filme.backdrop_path">-->
-  
-      <!--<ion-card-content>
-            <p>{{filme.overview}}</p>
-          </ion-card-content>-->
-  
-      <!--<ion-row>
-        <ion-col>
-          <button ion-button icon-left clear small>
-            <ion-icon name="people"></ion-icon>
-            <div>Participantes: {{objeto_feed.likes}}</div>
-          </button>
-        </ion-col>
-        <ion-col>
-          <button ion-button icon-left clear small>
-            <ion-icon name="document"></ion-icon>
-            <div>Id: {{objeto_feed.comments}}</div>
-          </button>
-        </ion-col>
-        <ion-col center text-center>
-          <ion-note>
-                {{objeto_feed.time_ago}}
-              </ion-note>
-        </ion-col>
-      </ion-row>-->
-  
     </ion-card>
   </ion-content>
