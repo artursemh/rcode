@@ -28,16 +28,26 @@
   <!--se tiver * antes da diretiva indica que é uma diretiva que 
           mexe com a estrutura do elemento que for aplicada-->
   <!--let cria uma variável-->
-  <ion-card>
-    <ion-item>
+  <ion-card center text-center>
+
       <!--<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>-->
-      <button ion-button icon-only (click)="busca()">
+      <ion-row center text-center>
+        <ion-col col-9>
+            <ion-input type="text" placeholder="Busca" style="font-size: 14pt"></ion-input>
+        </ion-col>
+        <ion-col>
+            <button ion-button icon-only (click)="busca()">
+                <ion-icon name="search"></ion-icon>
+            </button>
+        </ion-col>
+      </ion-row>
+
+      <!--<button ion-button icon-only (click)="busca()">
         <ion-item>
           <ion-input type="text" placeholder="Busca"></ion-input>
         </ion-item>
         <ion-icon name="search"></ion-icon>
-      </button>
-    </ion-item>
+      </button>-->
     <ion-item center text-center>
       <button ion-button icon-center color="blue" round large (click)="scanCode()">
         <ion-icon name="qr-scanner"></ion-icon>
