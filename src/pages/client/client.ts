@@ -22,14 +22,6 @@ import { MyApp } from '../../app/app.component';
   ]
 })
 export class ClientPage {
-  public objeto_feed = {
-    titulo: "Artur Amaral",
-    data: "25 de Abril, 2018",
-    descricao: "There's a news feed on my app. That's interesting.",
-    likes: 12,
-    comments: 6,
-    time_ago: "10h ago"
-  }
   public cliente_atual: string;
   public lista_rcode: Array<any> = null;
   public resp_eventos: Array<any>;
@@ -38,7 +30,6 @@ export class ClientPage {
   public user: Array<any>;
   public try:string; 
 
-  public nome_user:string = "Artur";
   /*Pra variavel aparecer no html é preciso fazer um binding {{}} */
   constructor(
     public navCtrl: NavController,
@@ -84,14 +75,10 @@ export class ClientPage {
     )
   }
 
-  palestras(evento:any){
-    this.navCtrl.push(EventoPage, {evento, user:this.call_palestra}); 
-    console.log(evento);
+  home(palestraId:any, evento:any, palestraNome:any){
+    this.navCtrl.push(EventoPage, {palestraId, evento, palestraNome});
+    console.log(palestraNome);
   }
 
-  home(palestra:any, evento:any){
-    this.navCtrl.push(EventoPage, {palestra, evento});
-    console.log(palestra);
-  }
 
 }

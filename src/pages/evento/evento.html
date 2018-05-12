@@ -11,11 +11,11 @@
       <ion-col center text-center col-10>
         <button ion-button menuToggle>
           <ion-icon name="menu"></ion-icon>
-          <ion-title>{{evento_clicado}}</ion-title>
+          <ion-title>{{palestraNome}}</ion-title>
         </button>
       </ion-col>
       <ion-col>
-        <ion-title>{{palestra}}</ion-title>
+        <ion-title>{{palestraNome}}</ion-title>
       </ion-col>
     </ion-row>
   </ion-navbar>
@@ -24,31 +24,37 @@
 
 <ion-content padding class="background">
 
-    <!--ngFor é uma diretiva para executar o loop do ion-card-->
-    <!--se tiver * antes da diretiva indica que é uma diretiva que 
+  <!--ngFor é uma diretiva para executar o loop do ion-card-->
+  <!--se tiver * antes da diretiva indica que é uma diretiva que 
           mexe com a estrutura do elemento que for aplicada-->
-    <!--let cria uma variável-->
-    <ion-card>
-      <ion-item>
-        <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-      </ion-item>
-      <ion-item center text-center>
-        <button ion-button icon-center color="blue" round large (click)="scanCode()">
-            <ion-icon name="qr-scanner"></ion-icon>
-        </button>
-      </ion-item>
-    </ion-card>
-
-    <ion-card text-wrap *ngIf="scannedCode">
-      <ion-card-content>
-        Última leitura: {{ scannedOutput }}
-      </ion-card-content>
-    </ion-card>
-
-    <ion-item center text-center style="background-color: #f5f5f5" class="logo_abaixo">
-        <img src="assets/imgs/logo2.png" alt="">
+  <!--let cria uma variável-->
+  <ion-card>
+    <ion-item>
+      <!--<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>-->
+      <button ion-button icon-only>
+        <ion-item>
+          <ion-input type="text" placeholder="Busca"></ion-input>
+        </ion-item>
+        <ion-icon name="search"></ion-icon>
+      </button>
     </ion-item>
-    
-       
-    <!--pega cada varável filme dentro da minha variável lista_filmes (loop)-->
-  </ion-content>
+    <ion-item center text-center>
+      <button ion-button icon-center color="blue" round large (click)="scanCode()">
+        <ion-icon name="qr-scanner"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-card>
+
+  <ion-card text-wrap *ngIf="scannedCode">
+    <ion-card-content>
+      Última leitura: {{ scannedOutput }}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-item center text-center style="background-color: #f5f5f5" class="logo_abaixo">
+    <img src="assets/imgs/logo2.png" alt="">
+  </ion-item>
+
+
+  <!--pega cada varável filme dentro da minha variável lista_filmes (loop)-->
+</ion-content>
