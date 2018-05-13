@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule, NavController, NavParams } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -13,12 +13,10 @@ import { EventoPageModule } from '../pages/evento/evento.module';
 import { ClientPageModule } from '../pages/client/client.module';
 import { SearchPageModule } from '../pages/search/search.module';
 import { AuthPageModule } from '../pages/auth/auth.module';
-import { AccordionPageModule } from '../pages/accordion/accordion.module';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Camera } from '@ionic-native/camera';
-
-import { AccordionComponent} from '../components/accordion/accordion';
+import { AuthProvider } from '../providers/auth/auth';
 
 
 @NgModule({
@@ -26,7 +24,6 @@ import { AccordionComponent} from '../components/accordion/accordion';
     MyApp,
     HomePage,
     ListPage,
-    AccordionComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +32,6 @@ import { AccordionComponent} from '../components/accordion/accordion';
     ClientPageModule,
     SearchPageModule,
     AuthPageModule,
-    AccordionPageModule,
     HttpModule,
     NgxQRCodeModule
   ],

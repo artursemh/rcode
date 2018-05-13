@@ -16,7 +16,7 @@ FACEBOOK: https://www.facebook.com/arturpamaral
 */
 
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, NavController, NavParams } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -26,7 +26,6 @@ import { EventoPage } from '../pages/evento/evento';
 import { ClientPage } from '../pages/client/client';
 import { SearchPage } from '../pages/search/search';
 import { AuthPage } from '../pages/auth/auth';
-import { AccordionPage } from '../pages/accordion/accordion';
 
 @Component({
   templateUrl: 'app.html',
@@ -35,30 +34,38 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   //public is_back ="0";
 
-  rootPage: any = ClientPage;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
+  public user:any;
 
   constructor(
     public platform: Platform,
     public statusBar: StatusBar,
-    public splashScreen: SplashScreen
+    public splashScreen: SplashScreen,
   ) {
     this.initializeApp();
-
+    //this.user = this.Autentic.login.usuario;
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'Cliente', component: ClientPage },
-      { title: 'List', component: ListPage },
-      { title: 'Evento', component: EventoPage },
+      //{ title: 'Home', component: HomePage },
+      //{ title: 'Meus Eventos', component: AuthPage },
+      //{ title: 'List', component: ListPage },
+      //{ title: 'Evento', component: EventoPage },
       { title: 'Sair', component: HomePage },
-      { title: 'Busca', component: SearchPage },
-      { title: 'Autenticação', component: AuthPage },
-      { title: 'Accordion', component: AccordionPage }
+      //{ title: 'Busca', component: SearchPage },
+      //{ title: 'Autenticação', component: AuthPage }
     ];
 
   }
+
+  /*openCliente(p){
+    this.navCtrl.push(ClientPage, {
+      permition: "1",
+      usuario: objeto_retorno.login.usuario,
+      try: "1",
+    });
+  }*/
 
   initializeApp() {
     this.platform.ready().then(() => {

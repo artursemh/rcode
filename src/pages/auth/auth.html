@@ -29,10 +29,15 @@
   </ion-row>
 
   <br><br>
-  <ion-row>
+  <ion-row *ngIf="!this.login_auth">
     <ion-col center text-center>
-        <p style="font-size: 8pt ;color: white">Iniciando sessão...{{ this.login_auth }}</p>
+        <p style="font-size: 8pt ;color: white">Iniciando sessão...</p>
     </ion-col>
   </ion-row>
+  <ion-row *ngIf="this.login_auth=='1'">
+      <ion-col center text-center>
+          <p style="font-size: 12pt ;color: white">Seja bem-vindo!</p>
+      </ion-col>
+    </ion-row>
 
 </ion-content>

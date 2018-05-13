@@ -4,9 +4,9 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<!--<ion-header>
 
-  <ion-navbar>
+  <ion-toolbar>
     <ion-row>
       <ion-col center text-center col-10>
         <button ion-button menuToggle>
@@ -14,12 +14,27 @@
           <ion-title>{{palestraNome}}</ion-title>
         </button>
       </ion-col>
+    </ion-row>
+  </ion-toolbar>-->
+
+<ion-header>
+  <ion-toolbar color="newcolor">
+    <ion-row align-items-center>
+      <ion-col col-1 center text-center>
+          <button ion-button menuToggle>
+              <ion-icon name="menu"></ion-icon>
+            </button>
+      </ion-col>
+      <ion-col col-9 center text-center text-wrap>
+          <ion-title>{{palestraNome}}</ion-title>
+      </ion-col>
       <ion-col>
-        <ion-title>{{palestraNome}}</ion-title>
+        <button ion-button color="light" item-end icon-only small outline (click)="goToHomePage()">
+          <ion-icon name="exit"></ion-icon>
+        </button>
       </ion-col>
     </ion-row>
-  </ion-navbar>
-
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding class="background">
@@ -30,26 +45,27 @@
   <!--let cria uma variável-->
   <ion-card center text-center>
 
-      <!--<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>-->
-      <ion-row center text-center>
-        <ion-col col-9>
-            <ion-input type="text"#input (input)="input.value=$event.target.value.toUpperCase()" placeholder="Busca" style="font-size: 14pt" [(ngModel)]="nomeBuscado.nome"></ion-input>
-        </ion-col>
-        <ion-col>
-            <button ion-button icon-only (click)="busca(this.evento_clicado, this.palestra)">
-                <ion-icon name="search"></ion-icon>
-            </button>
-        </ion-col>
-      </ion-row>
+    <!--<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>-->
+    <ion-row center text-center>
+      <ion-col col-9>
+        <ion-input type="text" #input (input)="input.value=$event.target.value.toUpperCase()" placeholder="Busca" style="font-size: 14pt"
+          [(ngModel)]="nomeBuscado.nome"></ion-input>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-only color="newcolor" (click)="busca(this.evento_clicado, this.palestra)">
+          <ion-icon name="search"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
 
-      <!--<button ion-button icon-only (click)="busca()">
+    <!--<button ion-button icon-only (click)="busca()">
         <ion-item>
           <ion-input type="text" placeholder="Busca"></ion-input>
         </ion-item>
         <ion-icon name="search"></ion-icon>
       </button>-->
     <ion-item center text-center>
-      <button ion-button icon-center color="blue" round large (click)="scanCode()">
+      <button ion-button icon-center color="newcolor" round large (click)="scanCode()">
         <ion-icon name="qr-scanner"></ion-icon>
       </button>
     </ion-item>

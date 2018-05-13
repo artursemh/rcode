@@ -6,6 +6,7 @@ import { Platform } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { PresencaProvider } from '../../providers/presenca/presenca';
 import { SearchPage } from '../search/search';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the EventoPage page.
@@ -103,34 +104,11 @@ export class EventoPage {
     }
     else {
       
-      //let reposta:any = 
-      /*let resposta = "https://www.roboticajr.com.br/webservice/api/inscritos.php?evento=" + evento + "&palestra=" + palestra + "&JSON=presenca&scan=22-22";
-      this.scannedCode = "Ta funcionando ev:" + evento + " pal: " + palestra;
-      let ans = this.http.get(resposta);
-      ans
-        .subscribe(data => {
-          console.log('my data: ', data);
-        })*/
         this.scannedOutput = "99-70";
         let resposta = "/rcodeapi/webservice/api/inscritos.php?evento=" + this.evento + "&palestra=" + this.palestra + "&JSON=presenca&scan="+this.scannedOutput;
         let ans = this.http.get(resposta);
         ans
           .subscribe(data => {
-            //const dado = (data as any);
-            //console.log('my data: ', dado);
-           /* const response = (data as any);
-            const objeto_retorno = JSON.parse(response._body);
-            this.resp_eventos = objeto_retorno.CHECAGEM;
-            this.lista_rcode2 = objeto_retorno[0].CHECAGEM[0].CHECK;
-            //this.call_palestra = objeto_retorno.results[0];
-            console.log(this.lista_rcode2);
-            if(this.lista_rcode2 == "0"){
-              this.scannedOutput = "Participante não cadastrado nesta palestra.";
-
-            }
-            else{
-              this.scannedOutput = "Check:" + this.lista_rcode2;
-            }*/
             const response = (data as any);
             const objeto_retorno = JSON.parse(response._body);
             this.resp_eventos = objeto_retorno[0].CHECAGEM;
@@ -148,5 +126,10 @@ export class EventoPage {
 
           })
     }
+  }
+
+  goToHomePage(){
+    alert("Saindo");
+    this.navCtrl.push(HomePage);
   }
 }

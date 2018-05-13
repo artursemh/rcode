@@ -41,7 +41,8 @@ page-client {
       .accordion {
         display:block;
         position: relative;
-        width: 300px;
+        //width: 300px;
+        width:100%;
         margin: 10px auto;
         height: auto;
         box-shadow: 0 0px 0px rgba(255,255,255,255);
@@ -118,7 +119,8 @@ page-client {
         padding: 0.0em; 
         position: relative;
         float: left;
-        width: 300px;
+        //width: 300px;
+        width: 100%;
         height: auto;
         clear: both;
         margin-top: -100%;
