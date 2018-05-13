@@ -6,36 +6,47 @@
 -->
 <ion-header>
 
-    <ion-navbar>
-        <ion-row>
-          <ion-col center text-center col-10>
-            <button ion-button menuToggle>
-              <ion-icon name="menu"></ion-icon>
-              <ion-title>Busca</ion-title>
-            </button>
-          </ion-col>
-          <ion-col>
-            <button ion-button small>
-              <ion-icon name="list-box"></ion-icon>
-            </button>
-          </ion-col>
-        </ion-row>
-      </ion-navbar>
-  
-  </ion-header>
-  
-  
-  <ion-content padding class="background">
-    <ion-card *ngFor="let filme of lista_filmes">
-      <ion-item>
-          <ion-label style="color:blue">{{ filme.original_title }}</ion-label>
-          <ion-toggle enabled checked="false"></ion-toggle>
-          <p class="feed_date">Id.: {{filme.release_date}}</p>
-      </ion-item>
-      <ion-item>
-        <ion-row center text-center>
-          <p class="feed_date">Id.: {{filme.release_date}}</p>
-        </ion-row> 
-      </ion-item>
-    </ion-card>
-  </ion-content>
+  <ion-navbar>
+    <ion-row>
+      <ion-col center text-center col-10>
+        <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+          <ion-title>Busca</ion-title>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button small>
+          <ion-icon name="list-box"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="background">
+  <ion-card *ngFor="let pessoa of resp_eventos; let j=index">
+    <ion-item>
+      <ion-label text-wrap style="color:blue">{{ resp_eventos[j].NOME }}</ion-label>
+      <ion-toggle enabled checked="false" (click)="presenca(this.evento, this.palestra, resp_eventos[j].NOME, resp_eventos[j].CREDENCIAL)"></ion-toggle>
+      <p class="feed_date">Id.: ID</p>
+    </ion-item>
+    <ion-item>
+      <ion-row center text-center>
+        <ion-col *ngIf="resp_eventos[j].STATUS=='Presente'">
+          <p style="color: green; font-weight: bold" class="feed_date">{{ resp_eventos[j].STATUS }}</p>
+        </ion-col>
+        <ion-col *ngIf="resp_eventos[j].STATUS=='Ausente'">
+          <p style="color: red" class="feed_date">{{ resp_eventos[j].STATUS }}</p>
+        </ion-col>
+        <ion-col>
+          <p class="feed_date">Id.: {{ resp_eventos[j].CREDENCIAL }}</p>
+        </ion-col>
+        <ion-col>
+          <p class="feed_date">Check.: {{ resp_eventos[j].CHECAGENS }}</p>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-card>
+</ion-content>

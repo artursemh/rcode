@@ -33,10 +33,10 @@
       <!--<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>-->
       <ion-row center text-center>
         <ion-col col-9>
-            <ion-input type="text" placeholder="Busca" style="font-size: 14pt"></ion-input>
+            <ion-input type="text"#input (input)="input.value=$event.target.value.toUpperCase()" placeholder="Busca" style="font-size: 14pt" [(ngModel)]="nomeBuscado.nome"></ion-input>
         </ion-col>
         <ion-col>
-            <button ion-button icon-only (click)="busca()">
+            <button ion-button icon-only (click)="busca(this.evento_clicado, this.palestra)">
                 <ion-icon name="search"></ion-icon>
             </button>
         </ion-col>

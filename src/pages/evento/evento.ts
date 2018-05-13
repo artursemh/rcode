@@ -20,6 +20,9 @@ import { SearchPage } from '../search/search';
   templateUrl: 'evento.html',
 })
 export class EventoPage {
+  private nomeBuscado: any = {
+    nome: '',
+  };
   presenca_rcode: string;
   lista_rcode2: string;
   resp_eventos: Array<any>;
@@ -52,15 +55,16 @@ export class EventoPage {
     this.palestra = this.navParams.get('palestraId');
     //this.user_logged = this.navParams.get('user');
     this.palestraNome = this.navParams.get('palestraNome');
-    console.log("Nome Palestra: "+this.palestraNome);
-    console.log("palestra Get:" + this.palestra);
+    console.log("Id Palestra: "+this.palestra);
+    console.log("Id evento:" + this.evento_clicado);
+    console.log("Ev:" + this.evento_clicado);
     
 
   }
 
 
-  busca(){
-    this.navCtrl.push(SearchPage);    
+  busca(evento:any, palestra:any){
+    this.navCtrl.push(SearchPage, {evento, palestra, nome: this.nomeBuscado.nome, palestraNome: this.palestraNome});    
   }
 
   scanCode() {
