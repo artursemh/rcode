@@ -15,7 +15,7 @@ export class HomePage {
     usuario: '',
     senha: ''
   };
-
+ 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
